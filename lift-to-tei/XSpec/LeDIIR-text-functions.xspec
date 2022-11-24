@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../Xslt/LeDIIR-text-functions.xsl" xmlns:lediir="https://daliboris.cz/ns/lediir/xslt/1.0">
+    <x:scenario label="sjednocení pravopisných variant znaku ی">
+        <x:call function="lediir:get-sort-key">
+            <x:param select="'ي'" />
+        </x:call>
+        <x:expect label="Znak ي nahrazený za ی" select="'ی'" />
+    </x:scenario>
+
+    <x:scenario label="sjednocení pravopisných variant znaku و">
+        <x:call function="lediir:get-sort-key">
+            <x:param select="'ـو'" />
+        </x:call>
+        <x:expect label="Znak ـو nahrazený za و" select="'و'" />
+    </x:scenario>
+
+    <x:scenario label="sjednocení pravopisných variant znaku و">
+        <x:call function="lediir:get-sort-key">
+            <x:param select="'ؤ'" />
+        </x:call>
+        <x:expect label="Znak ؤ nahrazený za و" select="'و'" />
+    </x:scenario>
+
+    <x:scenario label="sjednocení pravopisných variant znaku ه">
+        <x:call function="lediir:get-sort-key">
+            <x:param select="'ۀ'" />
+        </x:call>
+        <x:expect label="Znak ۀ nahrazený za ه" select="'ه'" />
+    </x:scenario>
+    
+   <x:scenario label="sjednocení pravopisných variant znaku ه">
+        <x:call function="lediir:get-sort-key">
+            <x:param select="'ة'" />
+        </x:call>
+        <x:expect label="Znak ة nahrazený za ه" select="'ه'" />
+    </x:scenario>
+    
+
+</x:description>

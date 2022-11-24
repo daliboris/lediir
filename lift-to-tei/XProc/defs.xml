@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file demonstrate the format of the file(s) expected for -statics on the commandline. -->
+<mox:static-options xmlns:mox="http://www.xml-project.com/morganaxproc">
+ <mox:option name="create-sample" value="false" />
+<!--
+ <mox:option name="root-directory" value="'testy/Ukazka/2022-06-01'" />
+ <mox:option name="file-name" value="'2022-06-01'" />
+ <mox:option name="source-lang" value="tg" />-->
+
+  <!--<mox:option name="root-directory" value="'testy/Ukazka/2022-10-05'" />
+ <mox:option name="file-name" value="'2022-10-05'" />
+ <mox:option name="source-lang" value="fa" />-->
+ 
+<!-- <mox:option name="root-directory" value="'testy/Ukazka/2022-10-19'" />
+ <mox:option name="file-name" value="'2022-10-19'" />
+ <mox:option name="source-lang" value="fa" />-->
+ 
+<!-- <mox:option name="root-directory" value="'testy/Ukazka/2022-11-01'" />
+ <mox:option name="file-name" value="'2022-11-01'" />
+ <mox:option name="source-lang" value="fa" />
+ -->
+ 
+ <mox:option name="root-directory" value="'../../lediir-data/2022-11-05'" />
+ <mox:option name="file-name" value="'2022-11-05'" />
+ <mox:option name="source-lang" value="fa" />
+ 
+ 
+</mox:static-options>
