@@ -40,7 +40,7 @@
  <xsl:template match="entry/sense/example/form[@lang='cs-CZ']" /><!-- příklady nemají mít výslovnost, pouze překlad -->
 	
 	<xsl:template match="field[@type='import-residue']" />
-	<xsl:template match="sense/reversal[not(*)]" /> <!-- odstranění reverzních odkazů, které neobsahují formu (heslo) -->
+	<xsl:template match="sense/reversal[not(*)]" priority="2" /> <!-- odstranění reverzních odkazů, které neobsahují formu (heslo) -->
  <xsl:template match="reversal[@type='fa']" /> <!-- reverzní odkazy v perštině jsou pozůstatky staršího zpracování -->
 	<xsl:template match="trait[@name='do-not-publish-in']" />
  <xsl:template match="note[@type='discourse']" /> <!-- nejspíš starší verze sémantické kategorie -->
