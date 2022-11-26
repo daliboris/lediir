@@ -20,7 +20,7 @@ Programy XProc 3.0 lze spouštět z příkazového řádku nebo s pomocí jinýc
   - rozzipujte stažený soubor do složky na svém počítači, např. do složky `D:\Programy\Saxon\HE\10`
 - stáhněte program **MorganaXProc-III** z úložiště <https://sourceforge.net/projects/morganaxproc-iiise/files/>, např. verzi [1.0.4](https://sourceforge.net/projects/morganaxproc-iiise/files/MorganaXProc-IIIse-1.0.4/MorganaXProc-IIIse-1.0.4.zip/download)
   - rozzipujte stažený soubor do složky na svém počítači, např. tak, aby všechny soubory byly ve složce `D:\Programy\Xml\Morgana`
-  - do podsložky `MorganaXProc-IIIse_lib` zkopírujte soubory `saxon-he-10.8.jar` a `saxon-he-xqj-10.8.jar`, které najdete ve složce s programem `SaxonJ-HE` (viz výše; tj. např. ve složce `D:\Programy\Saxon\HE\11`)
+  - do podsložky `MorganaXProc-IIIse_lib` zkopírujte soubory `saxon-he-10.8.jar` a `saxon-he-xqj-10.8.jar`, které najdete ve složce s programem `SaxonJ-HE` (viz výše; tj. např. ve složce `D:\Programy\Saxon\HE\10`)
   - složku, která obsahuje mj. soubor `Morgana.bat`, a podsložku `MorganaXProc-IIIse_lib` přidejte do proměnné `PATH` prostředí Windows
     - např. z příkazové řádky (**CMD**; je potřeba spustit ji jako administrátor) příkazem `setx`: `setx Path=%Path%;D:\Programy\Xml\Morgana;D:\Programy\Xml\Morgana\MorganaXProc-IIIse_lib`
       - viz např. [zde](https://cz.moyens.net/windows/co-je-windows-path-a-jak-jej-pridavate-a-upravujete/) a [zde](https://gist.github.com/vhenzl/c876d335c456a33098f2)
