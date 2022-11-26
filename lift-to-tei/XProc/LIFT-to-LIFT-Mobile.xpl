@@ -2,9 +2,13 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 	xmlns:dlb="https://www.daliboris.cz/ns/xproc/"
 	version="3.0">
-<!-- <p:option name="root-directory" static="true" select="'testy/Ukazka/2022-11-01/'" />
- <p:option name="file-name" static="true" select="'2022-11-01'" />
-	<p:option name="create-sample" as="xs:boolean" static="true" select="false()"/>-->
+
+ <p:documentation>
+   Slouží k úpravě dokumentu LIFT pro generování mobilní aplikace.
+   Vyčistí vstupní soubor od známých chyb a odkazů na nezpracovaná hesla.
+   Převede sémantické kategorie na uživatelské pole, aby je bylo možné zobrazi.
+ </p:documentation>
+
  <p:import href="LIFT-Processing.xpl" />
  
  <p:option name="root-directory" static="true"/>
@@ -28,21 +32,6 @@
   <p:with-option name="testing" select="$testing" />
  </dlb:clean-raw-data>
  
- <!-- 
- 
-	<p:xslt name="creating-sample" use-when="$create-sample">
-		<p:with-input port="stylesheet" href="../Xslt/LIFT-create-sample.xsl"/>
-	</p:xslt>
-	
- <p:xslt name="removing-elements" message="removing-elements">
-		<p:with-input port="stylesheet" href="../Xslt/LIFT-remove-elements.xsl"/>
-	</p:xslt>
- 
- <p:xslt name="cleaning-elements" message="cleaning-typos">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-clean-typos.xsl" />
- </p:xslt>
-	
-	 -->
 
  <p:xslt name="adding-domain-as-custom-field" message="adding-domain-as-custom-field">
   <p:with-input port="stylesheet" href="../Xslt/LIFT-ad-domain-as-custom-field.xsl" />

@@ -3,8 +3,15 @@
 	xmlns:dlb="https://www.daliboris.cz/ns/xproc/"
 	version="3.0"
 	name="resources">
-            
- <p:input port="source" primary="true" href="../testy/Ukazka/2022-11-01/resources/i18n/app/en.json" />
+ 
+ <p:option name="source-lang" static="true"/>
+ 
+ <p:documentation>Slučuje nově vygenerované zdrojové soubory (překlady) s těmi, které existují ve zdrojových kódech webové aplikace.</p:documentation>
+ 
+ <p:input port="source" primary="true">
+  <p:documentation>Prázdný vstup, který slouží k tomu, aby se spustila iterace.</p:documentation>
+  <p:inline><root /></p:inline>
+ </p:input>
  <p:output port="result" serialization="map{'indent' : true()}" sequence="true" />
  
  <p:declare-step name="merging" type="dlb:merging-resources">
@@ -14,12 +21,11 @@
   
   <p:json-merge duplicates="use-last" message="JSON merge for {$language}">
    <p:with-input>
-    <p:document href="../../tei-publisher/lediir/resources/i18n/app/{$language}.json" />
-    <p:document href="../testy/Ukazka/2022-11-01/resources/i18n/app/{$language}.json" />
+    <p:document href="../../web-app/resources/i18n/app/{$language}.json" />
+    <p:document href="../Dictionary/resources/i18n/app/{$language}.json" />
    </p:with-input>
   </p:json-merge>
-  <!--<p:store href="../testy/Ukazka/2022-10-05/resources/x-{$language}.json" message="storing x-{$language}.json" />-->
-  <p:store href="../../tei-publisher/lediir/resources/i18n/app/{$language}.json" message="storing {$language}.json in resources/i18n/app"  />
+  <p:store href="../../web-app/resources/i18n/app/{$language}.json" message="storing {$language}.json in resources/i18n/app"  />
  </p:declare-step>
  
  <p:for-each name="languages">

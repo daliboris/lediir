@@ -8,9 +8,12 @@
         </xd:desc>
     </xd:doc>
 
-
     <xsl:variable name="frequency-step-width" select="2.5" />
     <xsl:variable name="frequency-box-width" select="$frequency-step-width * 30" /> <!-- 130 při 5px -->
+
+    <xsl:template match="/tei:usg">
+     <xsl:call-template name="process-frequency" />
+    </xsl:template>
 
     <xsl:template name="process-frequency">
         <xsl:param name="frequency-step-width" select="$frequency-step-width" />

@@ -4,6 +4,8 @@
  xmlns:tei="http://www.tei-c.org/ns/1.0" 
  version="3.0">
  
+ <p:documentation>Procedura pro konverzi formátu LIFT do formátu TEI Lex-0 a vygenerování pomocných souborů (např. zdrojových souborů s překladem pro webovou aplikaci).</p:documentation>
+ 
  <p:import href="LIFT-ranges-Processing.xpl" />
  <p:import href="LIFT-Processing.xpl" />
  

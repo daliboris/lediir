@@ -3,20 +3,17 @@
 	xmlns:c="http://www.w3.org/ns/xproc-step"
 	version="3.0">
 
+ <p:documentation>
+  Přejmenuje odkazy v souboru LIFT, které jsou v atributu @href elementu range a které odkazují na umístění souboru s příponou .lift-ranges. 
+  Využije se v případě, že data pocházejí z jiného počítače, nebo se přesunula do jiné složky.
+ </p:documentation>
+
  <p:option name="root-directory" static="true"  />
  <p:option name="file-name" static="true" />
  
 	<p:output port="result" serialization="map{'indent' : true()}" sequence="true" />
 	
  <p:directory-list path="../{$root-directory}/" detailed="true" max-depth="1" include-filter="^.*\.lift.*$" />
- 
- <!--
-  <c:directory xml:base="file:/V:/Projekty/Github/Daliboris/iir-lex-db/slovnik/testy/Ukazka/2022-05-03/" name="2022-05-03" readable="true" writable="true" hidden="false" last-modified="2022-05-06T09:53:30.19Z" size="4096"
- xmlns:c="http://www.w3.org/ns/xproc-step">
- <c:file xml:base="22_05_03.lift" name="22_05_03.lift" content-type="application/octet-stream" readable="true" writable="true" hidden="false" last-modified="2022-05-03T09:54:00Z" size="11684045"/>
- <c:file xml:base="22_05_03.lift-ranges" name="22_05_03.lift-ranges" content-type="application/octet-stream" readable="true" writable="true" hidden="false" last-modified="2022-05-03T09:54:00Z" size="1456399"/>
-</c:directory>
- -->
  
  <p:filter select="c:directory/c:file" />
  
