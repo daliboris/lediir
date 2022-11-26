@@ -10,7 +10,7 @@ Pro správné fungování konverze a informačních skriptů je potřeba mít na
 
 - Běhové prostředí Java 11, např.  Zulu Community OpenJDK (<https://www.azul.com/downloads/?package=jdk>) s licencí <https://www.azul.com/products/core/openjdk-terms-of-use/>
 - Procesor MorganaXProc-III (<https://www.xml-project.com/morganaxproc-iii/>) je produkt s otevřeným kódem, který je distribuován pod licencí GNU General Public License 3 (GPLv3; <https://jxself.org/translations/gpl-3.cz.shtml>).
-- Aplikace SaxonJ-HE (<https://sourceforge.net/projects/saxon/files/Saxon-HE/11/>), která využívá opensourcovou licenci Mozilla Public License (<https://www.mozilla.org/en-US/MPL/2.0/>).
+- Aplikace SaxonJ-HE (<https://sourceforge.net/projects/saxon/files/Saxon-HE/10/>), která využívá opensourcovou licenci Mozilla Public License (<https://www.mozilla.org/en-US/MPL/2.0/>).
 
 Programy XProc 3.0 lze spouštět z příkazového řádku nebo s pomocí jiných aplikací, např. [ANT](https://ant.apache.org) nebo [oXygen XML Editor](https://www.oxygenxml.com/xml_editor/download_oxygenxml_editor.html) (či jiné edice).
 
