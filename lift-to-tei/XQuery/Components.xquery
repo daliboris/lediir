@@ -1,6 +1,11 @@
 xquery version "3.1" encoding "utf-8";
 
-let $doc := doc('../Testy/Ukazka/2021-09-01/2021-09-01.lift')
+(:
+ Pomocná funkce pro identifikaci různých typů relací (konkrétně '_component-lexeme' a 'Synonyms') mezi hesly a významy.
+:)
+
+let $directory := '2022-11-05'
+let $doc := doc(concat('../../lediir-data/', $directory, '/', $directory, '.lift'))
 
 let $components-ids := $doc//lift/entry/relation[@type='_component-lexeme'][@ref!='']/substring-after(@ref, '_')
 let $components-ids := $doc//lift/entry/sense/relation[@type='Synonyms'][@ref!='']/@ref

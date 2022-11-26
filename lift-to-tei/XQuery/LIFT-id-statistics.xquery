@@ -1,5 +1,9 @@
 xquery version "3.1" encoding "utf-8";
 
+(:
+ Pomocná funkce pro generování přehledu identifikátorů použitých v souboru LIFT.
+:)
+
 declare function local:get-elements ($document as document-node()) as item()*
 {
  let $entries := $document//entry

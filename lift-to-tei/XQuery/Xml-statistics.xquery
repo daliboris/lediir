@@ -1,5 +1,11 @@
 xquery version "3.1" encoding "utf-8";
 
+(:
+Pomocná funkce, která ve analyzuje vstupní dokument a pro zvolené elementy vygeneruje statistiky, 
+tj. seznam tokenů, které tvoří jejich textový obsah, popř. obsah jejich atributů.
+Detailní údaje lze v přehledu vynechat.
+:)
+
 declare variable $document as xs:string external;
 
 declare function local:get-content-values ($elements as element()*) as item()* 
@@ -81,12 +87,10 @@ for $item in $distinct
 </items>
 };
 
-(:let $doc := doc('../../Ukazka/2020-11-02/2020-11-02.lift')
-let $doc := doc('file:/D:/Slovniky/ESSC/Text/Word/Hotovo/Pismena/ESSC_P/ESSC_P.xml')
-:)
+
 let $doc := if ($document)
-            (:then doc(concat('../testy/Ukazka/', $document ,'/', $document, '.lift')):)
-            then doc(concat('../testy/Ukazka/', $document ,'/', 'LeDIIR-TGCS', '.xml'))
+            (:then doc(concat('../../lediir-data/', $document ,'/', $document, '.lift')):)
+            then doc(concat('../Dictionaries/', $document, '.xml'))
             else .
 return <report url="{document-uri($doc)}">
 {

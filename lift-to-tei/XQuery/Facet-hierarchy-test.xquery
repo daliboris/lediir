@@ -3,6 +3,9 @@ declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
+(:
+Testovací funkce pro generování hierarchického indexu v databázi eXist-db.
+:)
 
 declare function local:get-domain-hierarchy($entry as element()?) { 
 if (empty($entry)) then ()

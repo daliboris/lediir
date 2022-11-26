@@ -1,6 +1,13 @@
 xquery version "3.1";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+
+(:
+Testovací funkce pro hledání sémantických okruhů a generování základní podoby HTML.
+Je třeba spouštět vůči instanci lokální instanci eXist-db, např. pomocí oXygen XML Editoru.
+:)
+
+
 declare variable $config-taxonomy-ids := ('LeDIIR.taxonomy');
 
 declare function local:get-summary($catDesc as element(tei:catDesc)?) as item()* { 

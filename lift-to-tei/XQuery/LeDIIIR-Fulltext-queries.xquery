@@ -2,6 +2,12 @@ xquery version "3.1" encoding "utf-8";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 
+(:
+Testovací funkce pro fulltextové hledání v databázi eXist-db.
+Je třeba spouštět vůči instanci lokální instanci eXist-db, např. pomocí oXygen XML Editoru. 
+:)
+
+
 declare function local:test-ft($doc as xs:string?, $fields as xs:string+, $q as xs:string) as item()*
 {
  let $field := $fields[1]

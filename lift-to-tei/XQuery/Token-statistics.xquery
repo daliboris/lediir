@@ -1,5 +1,9 @@
 xquery version "3.1" encoding "utf-8";
 
+(:
+ Pomocná funkce, která ve vygenerovaném přehledu vyhledá často se vyskytující tokeny (výrazy) a tokeny, které obsahují tečku.
+:)
+
 declare variable $document as xs:string external;
 
 declare function local:extract-data ($element as element(item)) as item() 
