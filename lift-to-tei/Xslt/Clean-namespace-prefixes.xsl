@@ -10,7 +10,8 @@
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Oct 8, 2020</xd:p>
             <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
-            <xd:p></xd:p>
+            <xd:p>Šablona, která sjednotí používání a nepoužívání prefixů pro stejný jmenný prostor.</xd:p>
+            <xd:p>Výstupní dokument odstraní prefixy u elementů z jmenného prostoru TEI.</xd:p>
         </xd:desc>
     </xd:doc>
     

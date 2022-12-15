@@ -9,11 +9,13 @@
   <xd:desc>
    <xd:p><xd:b>Created on:</xd:b> Nov 17, 2021</xd:p>
    <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
-   <xd:p></xd:p>
+   <xd:p>Pomocná šablona, která generuje data o abecedě a jejím řazení,
+    kterou vužívá konfigurační soubor pro Dictionary App Builder.</xd:p>
+   <xd:p>Šablona pracuje se datovým souborem XML sestaveným pro tento projekt..</xd:p>
   </xd:desc>
  </xd:doc>
  
- <xsl:output indent="yes" method="xml"></xsl:output>
+ <xsl:output indent="yes" method="xml" />
  <xsl:template match="/">
   <data>
    <xsl:apply-templates select="alphabet/letters" />

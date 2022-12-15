@@ -9,7 +9,8 @@
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Oct 5, 2021</xd:p>
             <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
-            <xd:p></xd:p>
+            <xd:p>Pomocná tabulka, která převede statistické údaje o dílčích částech dokumentu XML
+            do tabulkové podoby dokumentu HTML.</xd:p>
         </xd:desc>
     </xd:doc>
     

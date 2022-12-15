@@ -10,7 +10,8 @@
   <xd:desc>
    <xd:p><xd:b>Created on:</xd:b> Dec 1, 2021</xd:p>
    <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
-   <xd:p></xd:p>
+   <xd:p>Úvodní část (hlavička, <xd:b>teiHeader</xd:b>) s metadady o projektu a jednotlivých slovnících.</xd:p>
+   <xd:p>Obsahuje všechny oddíly, které se zobrazí jako doprovodné texty ve webové aplikaci, např. <xd:i>O projektu</xd:i>, <xd:i>Jak citovat</xd:i> ap.</xd:p>
   </xd:desc>
  </xd:doc>
  

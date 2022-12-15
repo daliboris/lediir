@@ -7,7 +7,15 @@
 	version="2.0">
 	
 	
-	
+ <xd:doc scope="stylesheet">
+  <xd:desc>
+   <xd:p><xd:b>Created on:</xd:b> Dec 1, 2021</xd:p>
+   <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
+   <xd:p>Úvodní část (hlavička, <xd:b>teiHeader</xd:b>) s metadady o jednotlivých slovnících.</xd:p>
+   <xd:p>Na základě hodnoty parametru <xd:b>$dict-id</xd:b> (identifikátoru zpracovávaného slovníku) se vyberou údaje pro odpovídající slovník.</xd:p>
+  </xd:desc>
+ </xd:doc>
+ 
 	<xsl:template name="dictionary-header-tgcs">
 		<xsl:param name="title"  select="'Tádžicko-český slovník'"/>
 	 <xsl:param name="source-language"  select="'Tádžičtina'"/>
