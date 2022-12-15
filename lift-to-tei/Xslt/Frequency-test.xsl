@@ -706,12 +706,18 @@
 
     <xsl:template match="usg" mode="taller">
      <xsl:variable name="value" select="translate(normalize-space(.), ' ', '-')"/>
-     <xsl:result-document href="../Data/Frequency/{$value}.svg">
+     <xsl:call-template name="process-frequency">
+      <xsl:with-param name="frequency-step-width" select="1.5" />
+      <xsl:with-param name="frequency-box-width" select="60" />
+     </xsl:call-template>
+     
+     <!-- Pro vygenerování souborů do uvedené složky odkomentujte následující element. -->
+     <!--<xsl:result-document href="../../Dictionary/resources/images/frequency/{$value}.svg">
       <xsl:call-template name="process-frequency">
             <xsl:with-param name="frequency-step-width" select="1.5" />
             <xsl:with-param name="frequency-box-width" select="60" />
         </xsl:call-template>
-     </xsl:result-document>
+     </xsl:result-document>-->
     </xsl:template>
 
 
