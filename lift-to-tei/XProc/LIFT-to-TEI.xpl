@@ -14,6 +14,7 @@
  <p:option name="file-name" static="true"/>
  <p:option name="create-sample" as="xs:boolean" static="true"/>
  <p:option name="source-lang" static="true"/>
+ <p:option name="project-acronym" as="xs:string" select="'LeDIIR'" static="true" />
  
  <p:option name="testing" select="true()" static="true"  />
 
@@ -73,7 +74,7 @@
   <p:with-input port="insertion" pipe="@taxonomy-tei" select="/tei:TEI/tei:teiHeader[1]/tei:encodingDesc[1]/tei:classDecl[1]"/>
  </p:insert>
  
- <p:store href="../{$root-directory}/LeDIIR-{upper-case($source-lang)}CS-labels-before.xml" message="Storing ../{$root-directory}/LeDIIR-{upper-case($source-lang)}CS-labels-before.xml"/>
+ <p:store href="../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-labels-before.xml" message="Storing ../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-labels-before.xml"/>
  
  <p:xslt name="adding-labels-to-lemma-variants" message="adding-labels-to-lemma-variants">
   <p:with-input port="stylesheet" href="../Xslt/TEI-add-labels-to-variants.xsl"/>
@@ -84,10 +85,10 @@
   <p:with-input port="stylesheet" href="../Xslt/Clean-namespace-prefixes.xsl"/>
  </p:xslt>
 
- <p:store href="../{$root-directory}/LeDIIR-{upper-case($source-lang)}CS.xml" message="Storing ../{$root-directory}/LeDIIR-{upper-case($source-lang)}CS.xml"/>
+ <p:store href="../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS.xml" message="Storing ../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS.xml"/>
 
 
- <p:store href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS.xml" message="Storing ../Dictionary/{$root-directory}/LeDIIR-{upper-case($source-lang)}CS.xml"/>
+ <p:store href="../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS.xml" message="Storing ../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS.xml"/>
  
  
 <!-- <p:xslt name="generating-html" message="generating-html">
@@ -106,8 +107,9 @@
   <p:with-input port="stylesheet" href="../Xslt/Clean-namespace-prefixes.xsl"/>
  </p:xslt>
 
- <p:add-attribute attribute-name="xml:id" attribute-value="upper-case($source-lang)CS-about"/>
+ <p:add-attribute attribute-name="xml:id" attribute-value="{$project-acronym}"/>
 
- <p:store href="../{$root-directory}/LeDIIR-{upper-case($source-lang)}CS-about.xml" message="Storing ../{$root-directory}/LeDIIR-{upper-case($source-lang)}CS-about.xml"/>
-
+ <p:store href="../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-about.xml" message="Storing ../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-about.xml"/>
+ <p:store href="../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS-about.xml" message="Storing ../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS-about.xml"/>
+ 
 </p:declare-step>
