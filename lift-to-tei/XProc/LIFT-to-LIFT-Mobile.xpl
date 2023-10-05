@@ -6,7 +6,7 @@
  <p:documentation>
    Slouží k úpravě dokumentu LIFT pro generování mobilní aplikace.
    Vyčistí vstupní soubor od známých chyb a odkazů na nezpracovaná hesla.
-   Převede sémantické kategorie na uživatelské pole, aby je bylo možné zobrazi.
+   Převede sémantické kategorie na uživatelské pole, aby je bylo možné zobrazit.
  </p:documentation>
 
  <p:import href="LIFT-Processing.xpl" />
