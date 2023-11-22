@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI type="lex-0" xml:id="FACS-metadata" xml:lang="cs" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Persko-český slovník</title>
+            <author>
+               <forename>Darina</forename>
+               <surname>Vystrčilová</surname>
+            </author>
+            <author>
+               <forename>Mona</forename>
+               <surname>Khademi</surname>
+            </author>
+            <author>
+               <forename>Radka</forename>
+               <surname>Taucová</surname>
+            </author>
+            <author>
+               <forename>Zuzana</forename>
+               <surname>Kříhová</surname>
+            </author>
+            <author>
+               <forename>Ľubomír</forename>
+               <surname>Novák</surname>
+            </author>
+            <author>
+               <forename>Bořivoj</forename>
+               <surname>Nachtmann</surname>
+            </author>
+            <respStmt>
+               <resp>Připravila</resp>
+               <name>
+                  <forename>Darina</forename>
+                  <surname>Vystrčilová</surname>
+               </name>
+            </respStmt>
+            <respStmt>
+               <resp>Revize</resp>
+               <name>
+                  <forename>Radka</forename>
+                  <surname>Taucová</surname>
+               </name>
+            </respStmt>
+            <respStmt>
+               <resp>Jazyková korektura</resp>
+               <name>
+                  <forename>Kristýna</forename>
+                  <surname>Přibylová</surname>
+               </name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <distributor>Sociologický ústav AV ČR</distributor>
+            <distributor>Filozofická fakulta UK</distributor>
+            <date when="2022">2022</date>
+            <availability>
+               <licence target="http://creativecommons.org/licenses/by-nc-nd/4.0/">Toto dílo podléhá licenci Creative Commons Uveďte původ-Neužívejte komerčně-Nezpracovávejte 4.0 Mezinárodní Licence.</licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <biblStruct>
+               <monogr>
+                  <title>Elektronická lexikální databáze indoíránských jazyků: Perština</title>
+                  <imprint>
+                     <distributor>Sociologický ústav AV ČR</distributor>
+                     <distributor>Filozofická fakulta UK</distributor>
+                     <pubPlace>Praha</pubPlace>
+                     <date when="2022">2022</date>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="letter" xml:id="FACS.div.00033" n="33" subtype="1">
+            <head type="letter"> </head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00042" n="42" subtype="3">
+            <head type="letter">*</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00061" n="61" subtype="6">
+            <head type="letter">=</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00065" n="65" subtype="6620">
+            <head type="letter">ا</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00066" n="66" subtype="3895">
+            <head type="letter">ب</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00067" n="67" subtype="2443">
+            <head type="letter">پ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00068" n="68" subtype="3564">
+            <head type="letter">ت</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00069" n="69" subtype="79">
+            <head type="letter">ث</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00070" n="70" subtype="1427">
+            <head type="letter">ج</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00071" n="71" subtype="872">
+            <head type="letter">چ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00072" n="72" subtype="1124">
+            <head type="letter">ح</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00073" n="73" subtype="1893">
+            <head type="letter">خ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00074" n="74" subtype="3059">
+            <head type="letter">د</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00075" n="75" subtype="134">
+            <head type="letter">ذ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00076" n="76" subtype="1977">
+            <head type="letter">ر</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00077" n="77" subtype="973">
+            <head type="letter">ز</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00078" n="78" subtype="80">
+            <head type="letter">ژ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00079" n="79" subtype="2747">
+            <head type="letter">س</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00080" n="80" subtype="1547">
+            <head type="letter">ش</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00081" n="81" subtype="566">
+            <head type="letter">ص</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00082" n="82" subtype="168">
+            <head type="letter">ض</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00083" n="83" subtype="381">
+            <head type="letter">ط</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00084" n="84" subtype="89">
+            <head type="letter">ظ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00085" n="85" subtype="1372">
+            <head type="letter">ع</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00086" n="86" subtype="524">
+            <head type="letter">غ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00087" n="87" subtype="1468">
+            <head type="letter">ف</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00088" n="88" subtype="1106">
+            <head type="letter">ق</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00089" n="89" subtype="2970">
+            <head type="letter">ک</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00090" n="90" subtype="1675">
+            <head type="letter">گ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00097" n="97" subtype="1204">
+            <head type="letter">ل</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00098" n="98" subtype="6832">
+            <head type="letter">م</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00099" n="99" subtype="2641">
+            <head type="letter">ن</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00100" n="100" subtype="1541">
+            <head type="letter">و</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00101" n="101" subtype="1699">
+            <head type="letter">ه</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.00102" n="102" subtype="716">
+            <head type="letter">ی</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.01569" n="1569" subtype="1">
+            <head type="letter">ء</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.01600" n="1600" subtype="1">
+            <head type="letter">ـ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.01614" n="1614" subtype="4">
+            <head type="letter">َ</head>
+         </div>
+         <div type="letter" xml:id="FACS.div.01616" n="1616" subtype="5">
+            <head type="letter">ِ</head>
+         </div>
+      </body>
+   </text>
+</TEI>
