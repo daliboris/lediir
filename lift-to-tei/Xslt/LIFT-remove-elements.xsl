@@ -49,7 +49,7 @@
  <xsl:template match="entry/sense[not(trait[@name='status' and @value=('proved', 'Proved')])]/definition/form[@lang='en']" />
 	
 	<!-- odstranění významu, který není schválen/neprošel kontrolou -->
- <xsl:template match="sense[trait[@name='status' and not(normalize-space(@value)=('Confirmed', 'Proved Czech', 'Verified by reverse translation'))]]" />
+    <xsl:template match="sense[trait[@name='status' and not(normalize-space(@value)=('Confirmed', 'Proved Czech', 'Verified by reverse translation', 'Verified by examples', 'Not assessed'))]]" />
 	
  <!-- Chyba: heslové statě bez heslového slova -->
  <xsl:template match="entry[not(lexical-unit)]" />
