@@ -2,3 +2,4 @@
 *.lift
 *.lift-ranges
 .vs/
+*.code-workspace
