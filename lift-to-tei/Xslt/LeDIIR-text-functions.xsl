@@ -70,12 +70,24 @@
   <xsl:param name="headword" as="xs:string" />
   
   <!-- 
+   Diakritická znaménka:
+   &#x64f; = Arabic Damma
+   &#x64e; = Arabic Fatha
+   &#x650; = Arabic Kasra
+   &#x651; = Arabic Shadda
+   &#x652; = Arabic Sukun
+   &#x0640; = Arabic Tatweel
+
+   Mezery a řídicí znaky:
    &#x200d; = Zero Width Joiner; nespíš taky ignorovat
    &#x200c; = Zero Width Non-Joiner; půlmezera => zcela ignorovat
+   &#x200e; = Left-to-Right Mark (LRM) => zcela ignorovat
   -->
   <xsl:value-of select="$headword 
     => normalize-space() 
-    => translate( '&#x200c;&#x200d;', '') 
+    => translate('', '&#x64f;&#x64e;&#x650;&#x651;&#x652;&#x0640;')
+    => translate( '&#x200c;&#x200d;&#x200e;', '') 
+    => translate( '&#xfeff;', '!') 
     => translate( ' &#xa0;', '!') 
     => translate('ي', 'ی')
     => translate('ى', 'ی') 
@@ -180,6 +192,7 @@
    <relation name="Compare" type="related" label-type="cross-rerefence" label-subtype="related" label="Srovnej:" />
    <relation name="srovnej" type="related" label-type="cross-rerefence" label-subtype="related" label="Srovnej:" />
    <relation name="obecný" type="related" label-type="cross-rerefence" label-subtype="related" label="Srovnej:" />
+   <relation name="ref" type="related" label-type="cross-rerefence" label-subtype="related" label="Srovnej:" />
    <relation name="Specific" type="related" label-type="cross-rerefence" label-subtype="specific" />
    <relation name="specifický" type="related" label-type="cross-rerefence" label-subtype="specific" />
    <relation name="Synonyms" type="synonymy" label-type="cross-rerefence" label-subtype="synonyms" label="Synonyma:" />
