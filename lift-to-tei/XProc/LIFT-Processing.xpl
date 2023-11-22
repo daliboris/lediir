@@ -44,6 +44,11 @@
    <p:with-input port="stylesheet" href="../Xslt/LIFT-fix-errors.xsl"/>
   </p:xslt>
   
+  
+  <p:xslt name="removing-empty-examples" message="removing-empty-examples">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-remove-empty-elements.xsl"/>
+  </p:xslt>
+  
   <p:if test="$testing">
    <p:store href="../{$root-directory}/{$file-name}-unsorted.xml" message="saving ../{$root-directory}/{$file-name}-unsorted.xml" />
   </p:if>
@@ -100,6 +105,14 @@
   
   <p:xslt name="processing-complex-forms" message="processing-complex-forms">
    <p:with-input port="stylesheet" href="../Xslt/TEI-complex-forms-processing.xsl"/>
+  </p:xslt>
+  
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../Xslt/TEI-remove-duplicate-xml-ids.xsl"/>
+  </p:xslt>
+  
+  <p:xslt message="removing not approved entries">
+   <p:with-input port="stylesheet" href="../Xslt/TEI-remove-not-approved-entries.xsl"/>
   </p:xslt>
   
   <p:xslt name="generating-lemma-variants" message="generating-lemma-variants">
