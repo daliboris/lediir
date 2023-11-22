@@ -36,7 +36,7 @@
   <xd:desc><xd:p></xd:p></xd:desc>
  </xd:doc>
  <xsl:template match="/">
-  <tei:TEI version="0.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0" xml:id="{$dict-id}" xml:lang="cs">
+  <tei:TEI type="lex-0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0" xml:id="{$dict-id}" xml:lang="cs">
    <xsl:call-template name="dictionary-header">
     <xsl:with-param name="dict-id" select="$dict-id" />
    </xsl:call-template>
@@ -249,17 +249,17 @@
  <xsl:template match="citation" mode="referred">
   <xsl:variable name="trait-name" select="'variant-type'"/>
   <xsl:variable name="entry-id" select="lediir:get-entry-id(./parent::entry/@id)"/>
-  <xsl:variable name="type" select="./parent::entry/relation/trait[@name=$trait-name]/@value"/>
+  <xsl:variable name="type" select="./parent::entry/relation/trait[@name=$trait-name]/normalize-unicode(@value, 'NFC')"/>
   
   <xsl:variable name="type-lbl" select="translate(normalize-space($type[1]), ' ', '-')"/>
   
-  <xsl:variable name="items" select="doc($lift-ranges-file)//range[@id=($trait-name)]/range-element"/>
+  <xsl:variable name="items" select="doc($lift-ranges-file)//range[@id=($trait-name, 'grammatical-info')]/range-element"/>
   <xsl:variable name="value" select="normalize-unicode($type[1], 'NFC')"/>
   <xsl:variable name="item" select="$items[normalize-unicode(@id, 'NFC') = $value][1]"/>
   
   <xsl:variable name="range-element" select="key('variant-type-reference',  concat('#',$value))"/>
   
-  <xsl:variable name="lbl" select="translate(normalize-space($item/abbrev/form[@lang = 'en']), ' ', '-')"/>
+  <xsl:variable name="lbl" select="($item/abbrev/form[@lang = 'en'],$type)[1] => normalize-space() => translate(' ', '-')"/>
   <xsl:variable name="element-id" select="concat($taxonomy-id, '.', lediir:get-id-from-label($lbl))"/>
   
   
@@ -951,6 +951,21 @@
    
   </reference>
   
+ </xsl:template>
+ 
+ <xsl:template match="illustration">
+  <tei:note>
+   <tei:figure>
+   <xsl:apply-templates />
+   <tei:graphic url="{@href}" />
+  </tei:figure>
+  </tei:note>
+ </xsl:template>
+ 
+ <xsl:template match="illustration/label">
+  <tei:head>
+   <xsl:apply-templates />
+  </tei:head>
  </xsl:template>
 
  <xsl:function name="lediir:target-type" as="xs:string">
