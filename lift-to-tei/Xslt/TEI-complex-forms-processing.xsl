@@ -41,7 +41,7 @@
      <xsl:sort select="map:get($sort, ./@subtype)"/>
      <xsl:variable name="ref" select="."/>
      <xsl:variable name="entry" select="$ref/ancestor::tei:entry"/>
-     <xsl:variable name="xml-id" select="concat($entry/@xml:id, '.CF.', $entry-id, if($entry/@xml:id='FACS.6043db8e-cc64-4e9f-bfb3-c7a94f6f3544') then concat('.', position()) else '')"/>
+     <xsl:variable name="xml-id" select="concat($entry/@xml:id, '.CF.', $ref/@subtype, '.', $entry-id, if($entry/@xml:id='FACS.6043db8e-cc64-4e9f-bfb3-c7a94f6f3544') then concat('.', position()) else '')"/>
      <tei:entry type="complexForm" ana="{concat('#', $taxonomy-id, $taxonomy-category, $ref/@subtype)}" copyOf="{concat('#', $entry/@xml:id )}" xml:id="{$xml-id}">
       <xsl:copy-of select="$entry/@xml:lang"/>
       <xsl:copy-of select="$entry/@sortKey"/>
