@@ -16,7 +16,7 @@
  <p:option name="source-lang" static="true"/>
  <p:option name="project-acronym" as="xs:string" select="'LeDIIR'" static="true" />
  
- <p:option name="testing" select="true()" static="true"  />
+ <p:option name="testing" select="false()" static="true"  />
 
 
  <p:input port="source" primary="true">
@@ -31,6 +31,9 @@
   <p:with-option name="testing" select="$testing" />
  </dlb:clean-raw-data>
 
+ <p:store href="../{$root-directory}/temp/raw-data-cleaned.xml" use-when="$testing"/>
+ 
+
  <dlb:convert-to-tei name="converting-to-tei">
   <p:with-option name="source-lang" select="$source-lang" />
   <p:with-option name="root-directory" select="$root-directory" />
@@ -42,7 +45,7 @@
   
  <dlb:semantic-domains-to-tei-taxonomy  name="taxonomy-tei"/>
  
- <p:store href="../{$root-directory}/TEI-taxonomy.xml"/>
+ <p:store href="../{$root-directory}/TEI-taxonomy.xml" use-when="$testing"/>
 
  <!--
  <p:xslt name="generating-taxonomy-html" message="generating-taxonomy-html">
@@ -74,7 +77,7 @@
   <p:with-input port="insertion" pipe="@taxonomy-tei" select="/tei:TEI/tei:teiHeader[1]/tei:encodingDesc[1]/tei:classDecl[1]"/>
  </p:insert>
  
- <p:store href="../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-labels-before.xml" message="Storing ../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-labels-before.xml"/>
+ <p:store href="../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-labels-before.xml" message="Storing ../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-labels-before.xml" use-when="$testing"/>
  
  <p:xslt name="adding-labels-to-lemma-variants" message="adding-labels-to-lemma-variants">
   <p:with-input port="stylesheet" href="../Xslt/TEI-add-labels-to-variants.xsl"/>
@@ -89,7 +92,8 @@
 
 
  <p:store href="../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS.xml" message="Storing ../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS.xml"/>
- 
+
+
  
 <!-- <p:xslt name="generating-html" message="generating-html">
   <p:with-input port="stylesheet" href="../Xslt/TEI-to-HTML.xsl"/>
