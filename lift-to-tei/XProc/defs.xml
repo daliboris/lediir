@@ -2,10 +2,13 @@
 <!-- This file demonstrate the format of the file(s) expected for -statics on the commandline. -->
 <mox:static-options xmlns:mox="http://www.xml-project.com/morganaxproc">
  <mox:option name="create-sample" value="false" />
- 
- <mox:option name="root-directory" value="'../../lediir-data/2022-11-05'" />
- <mox:option name="file-name" value="'2022-11-05'" />
+
+ <mox:option name="project-acronym" value="'LeDIIR'" />
+ <mox:option name="file-name" value="'2023-11-21'" />
+ <mox:option name="root-directory" value="concat('../../lediir-data/', '2023-11-21')" />
  <mox:option name="source-lang" value="fa" />
+ <mox:option name="flex-file-path" value="'file:/D:/Data/SIL/FieldWorks/Projects/pes-ces-flex/pes-ces-flex.fwdata'" />
+ 
  
  
 </mox:static-options>
