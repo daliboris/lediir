@@ -38,5 +38,11 @@
   </xsl:if>
  </xsl:template>
  
+ <!-- Chyba: perská glosa; ve slovníku mají být jenom české a anglické -->
+ <xsl:template match="sense/gloss[@lang='fa']" />
+    
+    <xsl:template match="trait[@name='environment'][@value='غازنر']" />
+    
+    <xsl:template match="note[@type='grammar']/form[@lang='cs-CZ']/text[. = '[jád(-e...) ávardan]']" />
  
  </xsl:stylesheet>
