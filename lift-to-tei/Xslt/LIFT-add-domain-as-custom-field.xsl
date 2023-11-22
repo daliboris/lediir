@@ -26,11 +26,28 @@
     </text>
    </form>
   </field>
+  <xsl:apply-templates select="parent::*/trait[@name='semantic-domain-ddp4']" mode="reversal" />
  </xsl:template>
  
  <xsl:template match="trait[@name='semantic-domain-ddp4']" mode="value">
   <xsl:value-of select="@value"/>
   <xsl:if test="position() != last()">; </xsl:if>
+ </xsl:template>
+ 
+ <!--
+           <reversal type="cs-CZ">
+            <form lang="cs-CZ">
+               <text>háj</text>
+            </form>
+         </reversal>
+ -->
+ <xsl:template match="trait[@name='semantic-domain-ddp4']" mode="reversal">
+  <xsl:variable name="domain" select="replace(@value, '([\d\.]+)\s(.*)', '\2 (\1)')"/>
+  <reversal type="dm">
+   <form lang="dm">
+    <text><xsl:value-of select="@value"/></text>
+   </form>
+  </reversal>
  </xsl:template>
 
 </xsl:stylesheet>
