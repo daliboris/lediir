@@ -4,7 +4,7 @@ Projekt „Elektronická lexikální databáze indoíránských jazyků. Pilotn�
 
 The project "Electronic lexical database of Indo-Iranian languages. Pilot module Persian", which is implemented with the support of the Technology Agency of the Czech Republic ([TAČR](https://www.tacr.cz)) under reg. no. [TL03000369](https://www.isvavai.cz/cep?ss=detail&n=0&h=TL03000369).
 
-Toto úložiště obsahuje zdrojový kód aplikací, které se podílejí na přípravě a prezentaci slovníkových dat lexikální databáze indoíránských jazyků prostřednictvím webové a mobilní aplikace.
+Toto úložiště obsahuje informace o zdrojových kódech aplikací, které se podílejí na přípravě a prezentaci slovníkových dat lexikální databáze indoíránských jazyků prostřednictvím webové a mobilní aplikace.
 
 ## LeDIIR LIFT to TEI Lex-0 conversion
 
@@ -12,11 +12,19 @@ Ve složce [lift-to-tei](/lift-to-tei/) je zdrojový kód aplikace v jazyce [XPr
 
 ## LeDIIR Mobile Application
 
-Ve složce [mobile-app](/mobile-app/) je zdrojový kód s nastavením pro aplikaci [Dictionary App Builder](https://software.sil.org/dictionaryappbuilder/), která slouží ke generování slovníkových aplikací pro platformy Android a iOS.
+V samostatném repozitáři [lediir-mobile-app](https://github.com/daliboris/lediir-mobile-app/) je zdrojový kód s nastavením pro aplikaci [Dictionary App Builder](https://software.sil.org/dictionaryappbuilder/), která slouží ke generování slovníkových aplikací pro platformy Android a iOS.
 
 ## LeDIIR Web Application
 
-Ve složce [web-app](/web-app/) je zdrojový kód webové aplikace pro zpřístupnění digitálních slovníků.
+V samostatném repozitáři [lediir-web-app](https://github.com/daliboris/lediir-web-app/) je zdrojový kód webové aplikace pro zpřístupnění digitálních slovníků.
+
+## LeDIIR Web Data
+
+V samostatném repozitáři [lediir-web-data](https://github.com/daliboris/lediir-web-data/) je zdrojový kód webové knihovny eXist-db pro uložení a indexaci  digitálních slovníků.
+
+## LeDIIR Web Users
+
+V samostatném repozitáři [lediir-web-users](https://github.com/daliboris/lediir-web-users/) je zdrojový kód webové knihovny eXist-db pro vytvoření uživatelů webové aplikace.
 
 ## Prerekvizity
 
