@@ -1,1 +1,0 @@
-call "C:\Program Files (x86)\SIL\Dictionary App Builder\dab.bat" -load "Persian-Czech Dictionary" -build
