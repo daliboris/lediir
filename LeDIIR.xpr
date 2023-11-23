@@ -35,7 +35,11 @@
         </options>
     </meta>
     <projectTree name="LeDIIR.xpr">
-        <folder path="../lediir-data/"/>
         <folder path="."/>
+        <folder path="../lediir-data/"/>
+        <folder path="../lediir-mobile-app/"/>
+        <folder path="../lediir-web-app/"/>
+        <folder path="../lediir-web-data/"/>
+        <folder path="../lediir-web-users/"/>
     </projectTree>
 </project>
