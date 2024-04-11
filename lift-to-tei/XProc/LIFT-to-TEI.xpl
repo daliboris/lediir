@@ -14,7 +14,7 @@
  <p:option name="file-name" static="true"/>
  <p:option name="create-sample" as="xs:boolean" static="true"/>
  <p:option name="source-lang" static="true"/>
- <p:option name="project-acronym" as="xs:string" select="'LeDIIR'" static="true" />
+ <p:option name="project-acronym" select="'LeDIIR'" static="true" />
  
  <p:option name="testing" select="false()" static="true"  />
 
