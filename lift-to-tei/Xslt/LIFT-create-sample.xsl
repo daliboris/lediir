@@ -11,13 +11,23 @@
             <xd:p>Extrakce několika heslových statí pro ukázku.</xd:p>
         </xd:desc>
     </xd:doc>
-    <xsl:mode on-no-match="shallow-copy"/>
+    <xsl:mode on-no-match="shallow-skip"/>
     <xsl:output indent="yes" />
     <xsl:strip-space elements="*"/>
     <xsl:param name="ratio" select="50" />
+    <xsl:variable name="filter" select="'boost'" static="true"/>
+    
     
     <xsl:key name="related-entry" match="entry" use="@id" />
     <xsl:key name="subentry" match="entry" use="relation/@ref" />
+    
+    <xsl:template match="lift">
+        <xsl:copy>
+            <xsl:copy-of select="@*" />
+            <xsl:copy-of select="header" />
+            <xsl:apply-templates />
+        </xsl:copy>
+    </xsl:template>
     
 <!--    <xsl:template match="node() | @*">
         <xsl:copy>
@@ -31,7 +41,7 @@
             <xd:p>Pouze každý 25. doklad bude exportován.</xd:p>
         </xd:desc>
     </xd:doc>
- <xsl:template match="entry[position() mod $ratio != 0]" />
+ <xsl:template match="entry[position() mod $ratio != 0]" use-when="false()" />
  
 <!-- <xsl:template match="entry[.//trait[@name='status']/normalize-space(@value)=('Confirmed', 'Proved Czech', 'Verified by reverse translation')][position() mod $ratio = 0]" priority="2">
   <xsl:copy-of select="." />
@@ -41,7 +51,7 @@
  <xsl:template  match="entry[pronunciation[form/text = 'ebtedájí']]
   | entry[pronunciation[form/text = 'anfás']]
   | entry[pronunciation[form/text = ('otágh-e jek-nafare', 'otágh-e tak-tachte')]]
-  | entry[pronunciation[form/text = ('entehá', 'páján')]]" priority="3">
+  | entry[pronunciation[form/text = ('entehá', 'páján')]]" priority="3" use-when="$filter='individual'" >
   <xsl:copy-of select="." />
      <xsl:call-template name="copy-related-entries"/>
  </xsl:template>
@@ -49,31 +59,39 @@
  <!-- různé typy varianty -->
  <xsl:template match="entry[pronunciation[form/text = ('ebtekár (pl ebtekárát)', 'ebtekárát')]]
   | entry[pronunciation[form/text = ('esbát kardan', 'esbát namúdan')]]
-  | entry[pronunciation[form/text = ('ámúchte (pl ámúchtegán)', 'ámúchtegán')]]" priority="3">
+  | entry[pronunciation[form/text = ('ámúchte (pl ámúchtegán)', 'ámúchtegán')]]" priority="3" use-when="$filter='individual'">
   <xsl:copy-of select="." />
      <xsl:call-template name="copy-related-entries"/>
  </xsl:template>
     
     <!-- illustration -->
-    <xsl:template match="entry[pronunciation[form/text = ('áb-ambár')]]" priority="3">
+    <xsl:template match="entry[pronunciation[form/text = ('áb-ambár')]]" priority="3" use-when="$filter='individual'">
         <xsl:copy-of select="." />
         <xsl:call-template name="copy-related-entries"/>
     </xsl:template>
     
-    <xsl:template match="entry[pronunciation[form/text = ('abad')]]" priority="3">
+    <xsl:template match="entry[pronunciation[form/text = ('abad')]]" priority="3" use-when="$filter='individual'">
         <xsl:copy-of select="." />
         <xsl:call-template name="copy-related-entries"/>
     </xsl:template>
     
-    <xsl:template match="entry[sense/definition[contains(., 'elixír života')]]" priority="3">
+    <xsl:template match="entry[sense/definition[contains(., 'elixír života')]]" priority="3" use-when="$filter='individual'">
         <xsl:copy-of select="." />
         <xsl:call-template name="copy-related-entries"/>
     </xsl:template>
     
-    <xsl:template match="entry[sense/reversal[contains(., 'město')]]" priority="3">
+    <xsl:template match="entry[sense/reversal[contains(., 'město')]]" priority="3" use-when="$filter='individual'">
         <xsl:copy-of select="." />
         <xsl:call-template name="copy-related-entries"/>
     </xsl:template>
+    
+    <xsl:template match="entry[sense/definition[tokenize(., '\W+') = ('cesty')]]" priority="3" use-when="$filter='boost'">
+        <xsl:copy-of select="." />
+        <xsl:call-template name="copy-related-entries" />
+    </xsl:template>
+    
+    <!--<xsl:template match="entry[sense/definition[not(contains(., 'cesty'))]]" priority="3" use-when="$filter='boost'"  />-->
+    
     
     <xsl:template name="copy-related-entries">
         <xsl:for-each select="key('subentry', @id)">
