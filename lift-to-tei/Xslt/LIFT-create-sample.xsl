@@ -85,7 +85,7 @@
         <xsl:call-template name="copy-related-entries"/>
     </xsl:template>
     
-    <xsl:template match="entry[sense/definition[tokenize(., '\W+') = ('cesty')]]" priority="3" use-when="$filter='boost'">
+    <xsl:template match="entry[sense/definition[tokenize(., '\W+') = ('cesty', 'síla')]]" priority="3" use-when="$filter='boost'">
         <xsl:copy-of select="." />
         <xsl:call-template name="copy-related-entries" />
     </xsl:template>
