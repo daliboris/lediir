@@ -16,7 +16,7 @@
  <p:option name="source-lang" static="true"/>
  <p:option name="project-acronym" select="'LeDIIR'" static="true" />
  
- <p:option name="testing" select="false()" static="true"  />
+ <p:option name="testing" static="true"  />
 
 
  <p:input port="source" primary="true">
