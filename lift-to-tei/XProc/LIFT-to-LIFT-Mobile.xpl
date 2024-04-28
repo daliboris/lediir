@@ -159,7 +159,12 @@
  
  <p:store href="../{$root-directory}/{$file-name}-mobile.lift" serialization="map{'indent' : true()}" message="Saving ../{$root-directory}/{$file-name}-mobile.lift"/>
  <p:store href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile.lift" serialization="map{'indent' : true()}" message="Saving ../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile.lift"/>
+ <p:file-copy href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile.lift"
+  target="../../../lediir-mobile-app/dictionaries/{upper-case($source-lang)}CS/{upper-case($source-lang)}CS_data/lexicon/LeDIIR-{upper-case($source-lang)}CS-mobile.lift"
+  overwrite="true"
+  message="Copying to ../../../lediir-mobile-app/dictionaries/{upper-case($source-lang)}CS/{upper-case($source-lang)}CS_data/lexicon/LeDIIR-{upper-case($source-lang)}CS-mobile.lift" />
  
  <!--<dlb:add-reversal-for-domain/>-->
+ <!-- TODO: change copyright data a version of data in FACS_data/about/about.txt -->
  
 </p:declare-step>
