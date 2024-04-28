@@ -20,6 +20,10 @@
 	
 	<p:store href="../{$root-directory}/data/pes-ces-flex-clean.fwdata" serialization="map{'indent' : false()}" message="Storing text to ../{$root-directory}/data/pes-ces-flex-clean.fwdata" />
 
+	<p:file-copy href="../{$root-directory}/data/pes-ces-flex-clean.fwdata" target="{$flex-file-path}"  message="Storing text to original path {$flex-file-path}"  />
+	
+	<!--<p:store href="{$flex-file-path}" serialization="map{'indent' : false()}" message="Storing text to original path {$flex-file-path}" />-->
+	
 	<p:sink message="Done." />
 
 </p:declare-step>
