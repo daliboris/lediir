@@ -44,5 +44,10 @@
     <xsl:template match="trait[@name='environment'][@value='غازنر']" />
     
     <xsl:template match="note[@type='grammar']/form[@lang='cs-CZ']/text[. = '[jád(-e...) ávardan]']" />
+    
+    <!-- špatný hypertextový odkaz -->
+    <xsl:template match="text/span[starts-with(@href, 'file://')][@class='Hyperlink']">
+        <xsl:apply-templates />
+    </xsl:template>
  
  </xsl:stylesheet>
