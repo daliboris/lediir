@@ -124,6 +124,15 @@
    <p:with-input port="stylesheet" href="../Xslt/Clean-namespace-prefixes.xsl"/>
   </p:xslt>
   
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../Xslt/TEI-split-def.xsl" />
+  </p:xslt>
+  
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../Xslt/TEI-def-seg-add-n.xsl" />
+  </p:xslt>
+  
+  
   <p:store href="../{$root-directory}/{$file-name}-TEI.xml" message="Storing ../{$root-directory}/{$file-name}-TEI.xml"/>
   
   <p:xslt name="grouping-entries-by-letter" message="grouping-entries-by-letter">
