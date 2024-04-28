@@ -136,10 +136,39 @@
 		</p:viewport>
 	</p:group>
 	
-	<p:viewport match="tei:div/tei:entry" use-when="false()">
-		<p:variable name="id" select="/*/@xml:id" />
-		<p:store href="../Dictionary/entries/{$project-acronym}/{$dictionary-id}/{$id}.xml" serialization="map{'indent' : false()}"  message="Storing ../Dictionary/entries/{$project-acronym}/{$dictionary-id}/{$id}.xml"/>
-	</p:viewport>
+	<p:group use-when="false()" name="for-lediir-boost" message="Storing to ../../../lediir-boost/{$project-acronym}/{$dictionary-id}">
+		<dlb:prepare-tei-header name="teiHeader" />
+		<p:viewport match="tei:body/tei:div[@type='letter']">
+			<p:with-input pipe="source@tei-to-divs" />
+			
+			<p:variable name="letter-id" select="/*/@xml:id" />
+			<p:variable name="n" select="/*/@n" />
+			<p:variable name="head" select="/*/tei:head" />
+			<p:viewport match="tei:entry" message="Processing ../Dictionary/entries/{$project-acronym}/{$dictionary-id}/{$letter-id}">
+				<p:variable name="xml-id" select="/*/@xml:id" />
+				<p:variable name="id" select="concat(format-number(p:iteration-position(), '000000'), '-', $xml-id)" />
+				
+				<p:wrap wrapper="tei:div" match="/" />
+				<p:add-attribute attribute-name="n" attribute-value="{$n}" />
+				<p:add-attribute attribute-name="xml:id" attribute-value="{$letter-id}" />
+				<p:add-attribute attribute-name="type" attribute-value="letter" />
+				<p:insert match="tei:div" position="first-child">
+					<p:with-input port="insertion">
+						<p:inline>{$head}</p:inline>
+					</p:with-input>
+				</p:insert>
+				
+				<dlb:prepare-tei-document>
+					<p:with-input port="teiHeader" select="/tei:TEI/tei:teiHeader" pipe="result@teiHeader" />
+				</dlb:prepare-tei-document>
+				
+				
+				
+				<p:store href="../../../lediir-boost/{$project-acronym}/{$dictionary-id}/{format-number($n, '000000')}-{$id}.xml" serialization="map{'indent' : false()}"  />
+			</p:viewport>
+		</p:viewport>
+<!--		<p:store href="../Dictionary/entries/{$project-acronym}/{$dictionary-id}/{$id}.xml" serialization="map{'indent' : false()}"  message="Storing ../Dictionary/entries/{$project-acronym}/{$dictionary-id}/{$id}.xml"/>-->
+	</p:group>
 	
 	
 	<p:count />
