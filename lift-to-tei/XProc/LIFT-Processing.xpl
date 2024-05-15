@@ -91,7 +91,7 @@
   </p:xslt>
   
   <p:if test="$testing">
-   <p:store href="../{$root-directory}/{$file-name}-TEI-Step-01.xml" message="Storing ../{$root-directory}/{$file-name}-TEI-Step-01.xml" />   
+   <p:store href="../{$root-directory}/debug/{$file-name}-TEI-Step-01.xml" message="Storing ../{$root-directory}/debug/{$file-name}-TEI-Step-01.xml" />   
   </p:if>
   
   <p:xslt name="moving-usg-socioCultural" message="moving-usg-socioCultural">
@@ -99,14 +99,18 @@
   </p:xslt>
   
   <p:if test="$testing">
-   <p:store href="../{$root-directory}/{$file-name}-TEI-Step-01-usg.xml" message="Storing ../{$root-directory}/{$file-name}-TEI-Step-01-usg.xml" />   
+   <p:store href="../{$root-directory}/debug/{$file-name}-TEI-Step-01-usg.xml" message="Storing ../{$root-directory}/debug/{$file-name}-TEI-Step-01-usg.xml" />   
   </p:if>
   
   
   <p:xslt name="processing-complex-forms" message="processing-complex-forms">
    <p:with-input port="stylesheet" href="../Xslt/TEI-complex-forms-processing.xsl"/>
   </p:xslt>
-  
+
+  <p:xslt name="grouping-complex-forms" message="grouping-complex-forms">
+   <p:with-input port="stylesheet" href="../Xslt/TEI-complex-forms-grouping.xsl"/>
+  </p:xslt>
+
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/TEI-remove-duplicate-xml-ids.xsl"/>
   </p:xslt>
@@ -133,7 +137,7 @@
   </p:xslt>
   
   
-  <p:store href="../{$root-directory}/{$file-name}-TEI.xml" message="Storing ../{$root-directory}/{$file-name}-TEI.xml"/>
+  <p:store href="../{$root-directory}/debug/{$file-name}-TEI.xml" message="Storing ../{$root-directory}/debug/{$file-name}-TEI.xml"/>
   
   <p:xslt name="grouping-entries-by-letter" message="grouping-entries-by-letter">
    <p:with-input port="stylesheet" href="../Xslt/TEI-group-entries-by-letter.xsl"/>
