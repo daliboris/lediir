@@ -15,7 +15,7 @@
     <xsl:output indent="yes" />
     <xsl:strip-space elements="*"/>
     <xsl:param name="ratio" select="50" />
-    <xsl:variable name="filter" select="'boost'" static="true"/>
+    <xsl:variable name="filter" select="'complexForms'" static="true"/>
     
     
     <xsl:key name="related-entry" match="entry" use="@id" />
@@ -91,6 +91,11 @@
     </xsl:template>
     
     <!--<xsl:template match="entry[sense/definition[not(contains(., 'cesty'))]]" priority="3" use-when="$filter='boost'"  />-->
+    
+    <xsl:template match="entry[pronunciation[normalize-space() = ('bá', 'bárán')]]" priority="3" use-when="$filter='complexForms'">
+        <xsl:copy-of select="." />
+        <xsl:call-template name="copy-related-entries" />
+    </xsl:template>
     
     
     <xsl:template name="copy-related-entries">
