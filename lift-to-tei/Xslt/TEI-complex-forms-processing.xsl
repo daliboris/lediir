@@ -3,6 +3,7 @@
  xmlns:math="http://www.w3.org/2005/xpath-functions/math" 
  xmlns:map="http://www.w3.org/2005/xpath-functions/map"
  xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:tei="http://www.tei-c.org/ns/1.0"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
  exclude-result-prefixes="xs math xd tei map" version="3.0">
  <xd:doc scope="stylesheet">
   <xd:desc>
@@ -17,14 +18,14 @@
  <xsl:variable name="taxonomy-category" select="'.complexFormType.'"/>
  <xsl:variable name="sort" as="map(xs:string, xs:integer)">
   <xsl:map>
-   <xsl:map-entry key="'#kolokace'" select="1" />
-   <xsl:map-entry key="'#analytický-predikát'" select="2" />
-   <xsl:map-entry key="'#kompozitum'" select="3" />
-   <xsl:map-entry key="'#arabské-kompozitum'" select="4" />
-   <xsl:map-entry key="'#derivace'" select="5" />
-   <xsl:map-entry key="'#idiom'" select="6" />
-   <xsl:map-entry key="'#rčení-a-přísloví'" select="7" />
-   <xsl:map-entry key="'#nespecifikovaný-komplexní-tvar'" select="8" />
+   <xsl:map-entry key="'kolokace'" select="1" />
+   <xsl:map-entry key="'analytický-predikát'" select="2" />
+   <xsl:map-entry key="'kompozitum'" select="3" />
+   <xsl:map-entry key="'arabské-kompozitum'" select="4" />
+   <xsl:map-entry key="'derivace'" select="5" />
+   <xsl:map-entry key="'idiom'" select="6" />
+   <xsl:map-entry key="'rčení-a-přísloví'" select="7" />
+   <xsl:map-entry key="'nespecifikovaný-komplexní-tvar'" select="8" />
   </xsl:map>
  </xsl:variable>
  <xsl:key name="complex-entry" match="tei:xr[@type = 'related'][tei:lbl[@subtype = 'complex-forms']]/tei:ref" use="@target" />
@@ -46,10 +47,24 @@
       <xsl:copy-of select="$entry/@xml:lang"/>
       <xsl:copy-of select="$entry/@sortKey"/>
       <xsl:copy-of select="$entry/tei:form[@type = 'lemma'][1]"/>
+      <xsl:apply-templates select="$entry/tei:sense[1]" mode="complex-entry" >
+       <xsl:with-param name="entry-xml-id" select="$xml-id"></xsl:with-param>
+      </xsl:apply-templates>
+      <!--<xsl:copy-of select="$entry/tei:sense[1]/tei:def/self::* | preceding-sibling::*"/>-->
      </tei:entry>
     </xsl:for-each>
      
    </xsl:if>
+  </xsl:copy>
+ </xsl:template>
+ 
+ <xsl:template match="tei:sense" mode="complex-entry">
+  <xsl:param name="entry-xml-id" as="xs:string" />
+  <xsl:copy>
+   <xsl:copy-of select="@*" />
+   <xsl:attribute name="id" namespace="http://www.w3.org/XML/1998/namespace" select="concat($entry-xml-id, '.', @xml:id)" />
+   <xsl:attribute name="copy-of" select="concat('#', @xml:id)" />
+   <xsl:apply-templates select="tei:def[1]/preceding-sibling::* | tei:def[1]" />
   </xsl:copy>
  </xsl:template>
  
