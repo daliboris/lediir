@@ -83,6 +83,7 @@
 		
 	</p:declare-step>
 	
+	<p:file-delete href="../Dictionary/entries/{$project-acronym}/{$dictionary-id}/" recursive="true" />
 	
 	<!--<p:variable name="teiHeader" select="/tei:TEI/tei:teiHeader" />-->
 	
@@ -104,7 +105,9 @@
 	</p:group>
 	
 	<p:group use-when="true()">
-		<dlb:prepare-tei-header name="teiHeader" />
+		<dlb:prepare-tei-header name="teiHeader">
+			<p:with-input pipe="source@tei-to-divs" />
+		</dlb:prepare-tei-header>
 		<p:viewport match="tei:body/tei:div[@type='letter']">
 			<p:with-input pipe="source@tei-to-divs" />
 			
