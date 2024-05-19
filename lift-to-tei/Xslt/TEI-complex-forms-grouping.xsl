@@ -20,7 +20,7 @@
  
  <xsl:template match="tei:entry/tei:entry">
   <xsl:if test="not(preceding-sibling::tei:entry) or @ana != preceding-sibling::tei:entry[1]/@ana">
-   <lb type="{@type}"  subtype="{tokenize(@ana, '\.')[. != ''][last()]}" />
+   <lbl type="{@type}"  subtype="{substring-after(@ana, '#')}" />
   </xsl:if>
   <xsl:copy-of select="." />
  </xsl:template>

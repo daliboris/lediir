@@ -63,7 +63,7 @@
   <xsl:copy>
    <xsl:copy-of select="@*" />
    <xsl:attribute name="id" namespace="http://www.w3.org/XML/1998/namespace" select="concat($entry-xml-id, '.', @xml:id)" />
-   <xsl:attribute name="copy-of" select="concat('#', @xml:id)" />
+   <xsl:attribute name="copyOf" select="concat('#', @xml:id)" />
    <xsl:apply-templates select="tei:def[1]/preceding-sibling::* | tei:def[1]" />
   </xsl:copy>
  </xsl:template>
