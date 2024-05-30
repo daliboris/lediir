@@ -26,6 +26,7 @@
  
  <xsl:template match="/c:directory">
   <xsl:variable name="path" select="@xml:base"/>
+  <xsl:variable name="dir-name" select="@name"/>
   <c:archive xmlns:c="http://www.w3.org/ns/xproc-step">
    <xsl:for-each select="c:directory">
     <xsl:apply-templates select="." mode="process-directory">
@@ -33,7 +34,7 @@
     </xsl:apply-templates>
    </xsl:for-each>
    <xsl:for-each select="c:file">
-    <c:entry name="{@name}" href="{concat($path, @name)}" />
+    <c:entry name="{concat($root, $dir-name, '/', @name)}" href="{concat($path, @name)}" />
    </xsl:for-each>
   </c:archive>
  </xsl:template>
