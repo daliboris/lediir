@@ -40,13 +40,18 @@
    <xsl:if test="$complex-entry">
     <xsl:for-each select="$complex-entry">
      <xsl:sort select="map:get($sort, ./@subtype)"/>
+     <xsl:sort select="let $entry := ./ancestor::tei:entry return let $frequency := $entry/tei:usg[@type='frequency']/@value/tokenize(., '-')[1] ! substring(., 2) return if(empty($frequency) or $frequency = '') then concat('Z-', $entry/@sortKey) else concat($frequency, '-', $entry/@sortKey)"/>
      <xsl:variable name="ref" select="."/>
      <xsl:variable name="entry" select="$ref/ancestor::tei:entry"/>
+<!--     <xsl:variable name="frequency-letter" select="$entry/tei:usg[@type='frequency']/@value/tokenize(., '-')[1] ! substring(., 2)"/>
+     <xsl:variable name="frequency" select="if(empty($frequency-letter) or $frequency-letter = '') then 'Z-' else $frequency-letter || '-'"/>-->
      <xsl:variable name="xml-id" select="concat($entry/@xml:id, '.CF.', $ref/@subtype, '.', $entry-id, if($entry/@xml:id='FACS.6043db8e-cc64-4e9f-bfb3-c7a94f6f3544') then concat('.', position()) else '')"/>
      <tei:entry type="complexForm" ana="{concat('#', $taxonomy-id, $taxonomy-category, $ref/@subtype)}" copyOf="{concat('#', $entry/@xml:id )}" xml:id="{$xml-id}">
       <xsl:copy-of select="$entry/@xml:lang"/>
-      <xsl:copy-of select="$entry/@sortKey"/>
+      <xsl:copy-of select="$entry/@sortKey" />
+<!--      <xsl:attribute name="sortKey" select="concat($frequency, $entry/@sortKey)" />-->
       <xsl:copy-of select="$entry/tei:form[@type = 'lemma'][1]"/>
+      <xsl:copy-of select="$entry/tei:usg[@type='frequency']"/>
       <xsl:apply-templates select="$entry/tei:sense[1]" mode="complex-entry" >
        <xsl:with-param name="entry-xml-id" select="$xml-id"></xsl:with-param>
       </xsl:apply-templates>
