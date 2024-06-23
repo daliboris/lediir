@@ -25,4 +25,20 @@
   <xsl:copy-of select="." />
  </xsl:template>
  
+ <xsl:template match="tei:entry[tei:entry[@copyOf]]" use-when="false()">
+  <xsl:copy>
+   <xsl:copy-of select="@*" />
+   <xsl:for-each-group select="*" group-adjacent="if(self::tei:entry) then substring-after(./@ana, '#') else ''">
+    <xsl:choose>
+     <xsl:when test="current-grouping-key() = ''">
+      <xsl:copy-of select="current-group()" />
+     </xsl:when>
+     <xsl:otherwise>
+      <lbl type="{current-group()[1]/@type}"  subtype="{current-grouping-key()}" />
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:for-each-group>
+  </xsl:copy>
+ </xsl:template>
+ 
 </xsl:stylesheet>
