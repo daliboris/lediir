@@ -14,5 +14,12 @@
     </xd:desc>
   </xd:doc>
   <xsl:mode on-no-match="shallow-copy"/>
-  <xsl:template match="tei:entry[@xml:id = following-sibling::tei:entry/@xml:id]" />
+  <xsl:template match="tei:entry[@xml:id = following-sibling::tei:entry/@xml:id]" use-when="false()" />
+  
+  <xsl:template match="tei:entry[@copyOf]">
+    <xsl:variable name="id" select="@xml:id" />
+    <xsl:if test="not(preceding-sibling::tei:entry[@xml:id = $id])">
+      <xsl:copy-of select="." />
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>
