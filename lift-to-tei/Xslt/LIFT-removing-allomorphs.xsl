@@ -15,7 +15,13 @@
   
   <xsl:mode on-no-match="shallow-copy"/>
   
-  <xsl:template match="variant[trait[@name='morph-type'][@value='stem']]" />
-  <xsl:template match="variant[trait[@name='morph-type'][@value='phrase']]" />
+  <xsl:template match="variant[trait[@name='morph-type'][@value='stem']]" use-when="true()" />
+  <xsl:template match="variant[trait[@name='morph-type'][@value='phrase']]" use-when="true()"  />
+  
+  <xsl:template match="variant[trait[@name='morph-type'][@value='enclitic']][not(form)]" />
+  <xsl:template match="variant[trait[@name='morph-type'][@value='prefix']][not(form)]" />
+  <xsl:template match="variant[trait[@name='morph-type'][@value='clitic']][not(form)]" />
+  <xsl:template match="variant[trait[@name='morph-type'][@value='bound stem']][not(form)]" />
+  <xsl:template match="variant[trait[@name='morph-type']][not(form)]" />
   
 </xsl:stylesheet>
