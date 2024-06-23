@@ -82,7 +82,7 @@
   <p:variable name="base-directory" select="base-uri()"/>
   
    
-  <p:xslt name="creating-tei" message="creating-tei">
+  <p:xslt name="creating-tei" message="creating-tei;  lift-ranges-file : {(concat($base-directory, '-ranges'))}">
    <p:with-input port="stylesheet" href="../Xslt/LIFT-to-TEI.xsl"/>
    <p:with-option name="parameters" select="map{
     'lift-ranges-file' : concat($base-directory, '-ranges'), 
@@ -90,9 +90,15 @@
     }"/>
   </p:xslt>
   
+  
   <p:if test="$testing">
    <p:store href="../{$root-directory}/debug/{$file-name}-TEI-Step-01.xml" message="Storing ../{$root-directory}/debug/{$file-name}-TEI-Step-01.xml" />   
   </p:if>
+  
+  <p:xslt name="remove-en-reversals" message="removing foreign elements (revesals and definitions): en">
+   <p:with-input port="stylesheet" href="../Xslt/TEI-remove-foreign-elements.xsl" />
+   <p:with-option name="parameters" select="map{ 'languages-to-remove' : ('en') }" />
+  </p:xslt>
   
   <p:xslt name="moving-usg-socioCultural" message="moving-usg-socioCultural">
    <p:with-input port="stylesheet" href="../Xslt/TEI-moving-usg-socioCultural.xsl"/>
@@ -106,12 +112,22 @@
   <p:xslt name="processing-complex-forms" message="processing-complex-forms">
    <p:with-input port="stylesheet" href="../Xslt/TEI-complex-forms-processing.xsl"/>
   </p:xslt>
+  
+  <p:if test="$testing">
+   <p:store href="../{$root-directory}/debug/{$file-name}-TEI-Step-02-complex-forms-processing.xml" message="Storing ../{$root-directory}/debug/{$file-name}-TEI-Step-02-complex-forms-processing.xml" />   
+  </p:if>
+  
 
   <p:xslt name="grouping-complex-forms" message="grouping-complex-forms">
    <p:with-input port="stylesheet" href="../Xslt/TEI-complex-forms-grouping.xsl"/>
   </p:xslt>
+  
+  <p:if test="$testing">
+   <p:store href="../{$root-directory}/debug/{$file-name}-TEI-Step-03-complex-forms-grouping.xml" message="Storing ../{$root-directory}/debug/{$file-name}-TEI-Step-03-complex-forms-grouping.xml" />   
+  </p:if>
+  
 
-  <p:xslt>
+  <p:xslt message="removing duplicated xml:id">
    <p:with-input port="stylesheet" href="../Xslt/TEI-remove-duplicate-xml-ids.xsl"/>
   </p:xslt>
   

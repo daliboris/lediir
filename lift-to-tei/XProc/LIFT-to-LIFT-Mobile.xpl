@@ -94,7 +94,11 @@
  </dlb:clean-raw-data>
 
  <!-- heslové statě bez významu a odkazu na jiná hesla -->
- <p:delete match="entry[not(sense)][not(relation)]" />
+ <p:delete match="entry[not(sense)][not(relation)]" message="removing entries with no sense and relation"/>
+ 
+ <p:delete match="reversal[@type='en']" message="removing English reversals" />
+ <p:delete match="gloss[@lang='en']" message="removing English glosses" />
+ <p:delete match="definition/form[@lang='en']" message="removing English definitions" />
  
  <p:xslt name="removing-allomorphs" message="removing-allomorphs">
   <p:with-input port="stylesheet" href="../Xslt/LIFT-removing-allomorphs.xsl"/>
