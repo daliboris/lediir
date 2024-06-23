@@ -10,7 +10,7 @@
     <xd:desc>
       <xd:p><xd:b>Created on:</xd:b> Nov 21, 2023</xd:p>
       <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
-      <xd:p></xd:p>
+      <xd:p>Odstraní heslové stati, které nemají význam a zároveň se na ně neodkazuje.</xd:p>
     </xd:desc>
   </xd:doc>
   
