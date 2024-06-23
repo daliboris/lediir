@@ -83,6 +83,9 @@
   <p:with-input port="stylesheet" href="../Xslt/TEI-add-labels-to-variants.xsl"/>
  </p:xslt>
  
+ <p:xslt name="cleaning-language-values" message="cleaning-language-values">
+  <p:with-input port="stylesheet" href="../Xslt/TEI-clean-language-values.xsl"/>
+ </p:xslt>
  
  <p:xslt name="cleaning-namespace-prefixes" message="cleaning-namespace-prefixes">
   <p:with-input port="stylesheet" href="../Xslt/Clean-namespace-prefixes.xsl"/>
@@ -114,6 +117,6 @@
  <p:add-attribute attribute-name="xml:id" attribute-value="{$project-acronym}"/>
 
  <p:store href="../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-about.xml" message="Storing ../{$root-directory}/{$project-acronym}-{upper-case($source-lang)}CS-about.xml"/>
- <p:store href="../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS-about.xml" message="Storing ../Dictionary/{$project-acronym}-{upper-case($source-lang)}CS-about.xml"/>
+ <p:store href="../Dictionary/about/{$project-acronym}-{upper-case($source-lang)}CS-about.xml" message="Storing ../Dictionary/about/{$project-acronym}-{upper-case($source-lang)}CS-about.xml"/>
  
 </p:declare-step>
