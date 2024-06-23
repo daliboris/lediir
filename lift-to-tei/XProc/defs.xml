@@ -6,8 +6,8 @@
  <mox:option name="testing" value="true" />
 
  <mox:option name="project-acronym" value="'LeDIIR'" />
- <mox:option name="file-name" value="'2024-05-28'" />
- <mox:option name="root-directory" value="concat('../../lediir-data/', '2024-05-28')" />
+ <mox:option name="file-name" value="'2024-06-19'" />
+ <mox:option name="root-directory" value="concat('../../lediir-data/', '2024-06-19')" />
  <mox:option name="source-lang" value="fa" />
  <mox:option name="flex-file-path" value="'file:/D:/Data/SIL/FieldWorks/Projects/pes-ces-flex/pes-ces-flex.fwdata'" />
  
