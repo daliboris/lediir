@@ -30,6 +30,7 @@
     <tei:body>
      <xsl:call-template name="front-content"/>
     </tei:body>
+    <xsl:copy-of select="tei:text/tei:back" />
    </tei:text>
   </xsl:copy>
  </xsl:template>
