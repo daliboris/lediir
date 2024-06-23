@@ -21,11 +21,11 @@
   
   <p:json-merge duplicates="use-last" message="JSON merge for {$language}">
    <p:with-input>
-    <p:document href="../../web-app/resources/i18n/app/{$language}.json" />
+    <p:document href="../../lediir-web-app/resources/i18n/app/{$language}.json" />
     <p:document href="../Dictionary/resources/i18n/app/{$language}.json" />
    </p:with-input>
   </p:json-merge>
-  <p:store href="../../web-app/resources/i18n/app/{$language}.json" message="storing {$language}.json in resources/i18n/app"  />
+  <p:store href="../../lediir-web-app/resources/i18n/app/{$language}.json" message="storing {$language}.json in resources/i18n/app"  />
  </p:declare-step>
  
  <p:for-each name="languages">
