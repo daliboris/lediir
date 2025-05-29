@@ -15,7 +15,7 @@
     <xsl:output indent="yes" />
     <xsl:strip-space elements="*"/>
     <xsl:param name="ratio" select="50" />
-    <xsl:variable name="filter" select="'complexForms'" static="true"/>
+    <xsl:variable name="filter" select="'spaces'" static="true"/>
     
     
     <xsl:key name="related-entry" match="entry" use="@id" />
@@ -93,6 +93,33 @@
     <!--<xsl:template match="entry[sense/definition[not(contains(., 'cesty'))]]" priority="3" use-when="$filter='boost'"  />-->
     
     <xsl:template match="entry[pronunciation[normalize-space() = ('bá', 'bárán')]]" priority="3" use-when="$filter='complexForms'">
+        <xsl:copy-of select="." />
+        <xsl:call-template name="copy-related-entries" />
+    </xsl:template>
+    
+    <xsl:template match="
+        entry[citation[normalize-space() =
+        ('در انتظار بودن',
+        'انتظار داشتن',
+        'مورد انتقاد قرار دادن',
+        'انتقال دهنده',
+        'به انحراف کشیده شدن',
+        'پایمردی کردن',
+        'این بار',
+        'این دفعه',
+        'آیین‌نامه داخلی',
+        'پادرمیانی کردن',
+        'پا در هوا',
+        'پارچه فروشی',
+        'پاره پاره',
+        'کار پاره وقت',
+        'سگ پاسبان',
+        'خوش آب و رنگ',
+        'به داد رسیدن',
+        'در به در',
+        'در بر گرفتن',
+        'دست به دهان زندگی کردن')
+        ]] " priority="3" use-when="$filter='spaces'">
         <xsl:copy-of select="." />
         <xsl:call-template name="copy-related-entries" />
     </xsl:template>
