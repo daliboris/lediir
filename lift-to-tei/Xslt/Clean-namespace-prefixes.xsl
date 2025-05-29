@@ -5,7 +5,7 @@
     xmlns="http://www.tei-c.org/ns/1.0"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs xd tei"
-    version="2.0">
+    version="3.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Oct 8, 2020</xd:p>

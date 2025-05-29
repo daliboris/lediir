@@ -4,7 +4,7 @@
  xmlns:tei="http://www.tei-c.org/ns/1.0"
  xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
  exclude-result-prefixes="xs xd"
- version="2.0">
+ version="3.0">
  
  <xd:doc scope="stylesheet">
   <xd:desc>
