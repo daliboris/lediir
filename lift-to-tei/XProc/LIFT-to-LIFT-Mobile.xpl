@@ -17,6 +17,12 @@
  <p:option name="root-directory" static="true"/>
  <p:option name="file-name" static="true"/>
  <p:option name="create-sample" as="xs:boolean" static="true"/>
+ <p:option name="test-version" as="xs:string?" select="()" values="('underscore', 'nonbreak', 'sample')" />
+ <p:option name="whitespace-replacements" as="map(*)" select="map { 
+  'undescore' : map {'replacement' : '_' },
+  'nonbreak' : map {'replacement' : '&#xa0;' },
+  'sample' :  map {'replacement' : ' ' }
+  }" static="true"/>
  <p:option name="source-lang" static="true"/>
  
  <p:option name="testing" select="false()" static="true"/>
@@ -104,6 +110,14 @@
   <p:with-input port="stylesheet" href="../Xslt/LIFT-removing-allomorphs.xsl"/>
  </p:xslt>
  
+ <p:if test="$test-version">
+  <p:xslt name="multiword-expressions-modify" message="multiword-expressions-modify">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-multiword-expressions-modify.xsl" />
+   <p:with-option name="parameters" select="$whitespace-replacements($test-version)" />
+  </p:xslt>
+ </p:if>
+ 
+ 
  <p:xslt name="copying-variants" message="copying-variants">
   <p:with-input port="stylesheet" href="../Xslt/LIFT-copying-variants.xsl"/>
  </p:xslt>
@@ -117,6 +131,11 @@
    message="Saving ../{$root-directory}/{$file-name}-replacing-frequency.lift"
    use-when="$testing"
   />
+ 
+ <p:xslt name="removing-low-frequency" message="removing-low-frequency">
+  <p:with-input port="stylesheet" href="../Xslt/LIFT-removing-low-frequency.xsl"/>
+ </p:xslt>
+ 
  
  <p:xslt name="adding-frequency-as-gloss" message="adding-frequency-as-gloss" use-when="false()">
   <p:with-input port="stylesheet" href="../Xslt/LIFT-add-frequency-as-gloss.xsl"/>
