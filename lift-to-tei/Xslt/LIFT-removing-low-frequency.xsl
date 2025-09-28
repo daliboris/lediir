@@ -13,10 +13,26 @@
   </xd:desc>
  </xd:doc>
  <xsl:mode on-no-match="shallow-copy"/>
+ <xsl:param name="target-level" as="xs:string?" required="yes" />
  
- <!-- remowing entries with frequeny R and X -->
- <xsl:template match="entry[field[@type='Frequency'][form/text = ('◧□□', '□□□')]]" use-when="false()" />
- <xsl:template match="entry[field[@type='Frequency'][form/text = ('■◧□', '■□□',  '◧□□' , '□□□')]]"  /> <!--D, E, R, X -->
- <xsl:template match="entry[field[@type='Frequency'][form/text = ('■■□', '■◧□', '■□□',  '◧□□' , '□□□')]]" use-when="false()" /> <!--C, D, E, R, X -->
+ 
+ <xsl:template match="entry[field[@type='Frequency'][form/text = ('◧□□', '□□□')]]" /> <!-- entries with frequeny R and X -->
+ <xsl:template match="entry[field[@type='Frequency'][form/text = ('■◧□', '■□□')]]"> <!-- entries with frequeny D, E -->
+  <xsl:choose>
+   <xsl:when test="$target-level = 'Basic'" />
+   <xsl:when test="$target-level = 'Medium'" />
+   <xsl:otherwise>
+    <xsl:copy-of select="." />
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template> 
+ <xsl:template match="entry[field[@type='Frequency'][form/text = ('■■□')]]" > <!-- entries with frequeny C -->
+  <xsl:choose>
+   <xsl:when test="$target-level = 'Basic'" />
+   <xsl:otherwise>
+    <xsl:copy-of select="." />
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template> 
  <xsl:template match="entry[not(field[@type='Frequency'])]" />
 </xsl:stylesheet>
