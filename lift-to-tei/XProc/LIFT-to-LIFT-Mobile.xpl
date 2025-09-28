@@ -17,11 +17,16 @@
  <p:option name="root-directory" static="true"/>
  <p:option name="file-name" static="true"/>
  <p:option name="create-sample" as="xs:boolean" static="true"/>
- <p:option name="test-version" as="xs:string?" select="()" values="('underscore', 'nonbreak', 'sample')" />
+ <p:option name="test-version" as="xs:string?" select="()" values="('underscore', 'nonbreak', 'sample', 'pronunciation')" />
+ 
+ <p:option name="target-level" as="xs:string*" select="('Basic', 'Medium', 'Large')" values="('Basic', 'Medium', 'Large')" />
+ <p:option name="replace-pronunciation" as="xs:boolean" select="true()" />
+ 
  <p:option name="whitespace-replacements" as="map(*)" select="map { 
   'undescore' : map {'replacement' : '_' },
   'nonbreak' : map {'replacement' : '&#xa0;' },
-  'sample' :  map {'replacement' : ' ' }
+  'sample' :  map {'replacement' : ' ' },
+  'pronunciation' :  map {'replacement' : ' ' }
   }" static="true"/>
  <p:option name="source-lang" static="true"/>
  
@@ -126,67 +131,75 @@
   <p:with-input port="stylesheet" href="../Xslt/LIFT-replacing-frequency.xsl"/>
  </p:xslt>
  
+ <p:identity name="full-content" />
+ 
  <p:store href="../{$root-directory}/{$file-name}-replacing-frequency.lift"
    serialization="map{'indent' : true()}" 
    message="Saving ../{$root-directory}/{$file-name}-replacing-frequency.lift"
    use-when="$testing"
   />
  
- <p:xslt name="removing-low-frequency" message="removing-low-frequency">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-removing-low-frequency.xsl"/>
- </p:xslt>
+ <p:for-each>
+  <p:with-input select="$target-level"/>
+  <p:variable name="target" select="." />
+  
+  <p:xslt name="removing-low-frequency" message="removing-low-frequency">
+   <p:with-input port="source" pipe="result@full-content" />
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-removing-low-frequency.xsl" />
+   <p:with-option name="parameters" select="map {'target-level' : $target }" />
+  </p:xslt>
+  
+  <p:xslt name="moving-en-example-to-translation" message="moving-en-example-to-translation">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-move-en-example-to-translation.xsl"/>
+  </p:xslt>
+  
+  <p:xslt name="moving-grammar-note-to-definition" message="moving-grammar-note-to-definition">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-moving-grammar-note-to-definition.xsl"/>
+  </p:xslt>
+  
+  <p:xslt name="merging-grammar-note-in-definition" message="merging-grammar-note-in-definition">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-merging-grammar-note-in-definition.xsl"/>
+  </p:xslt>
+  
+  <p:xslt name="moving-domain-after-definition" message="moving-domain-after-definition">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-moving-domain-after-definition.xsl"/>
+  </p:xslt>
+  
+  <p:xslt name="adding-domain-as-custom-field" message="adding-domain-as-custom-field">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-add-domain-as-custom-field.xsl"/>
+  </p:xslt>
+  
+  <p:xslt name="adding-domain-as-gloss" message="adding-domain-as-gloss">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-add-domain-as-gloss.xsl"/>
+  </p:xslt>
+  
+  <p:xslt name="removing-domain-field" message="removing-domain-field">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-remove-domain-field.xsl"/>
+  </p:xslt>
+  
+  <p:if test="$replace-pronunciation">
+   <p:xslt name="adding-pronunciation-as-custom-field" message="adding-pronunciation-as-custom-field">
+    <p:with-input port="stylesheet" href="../Xslt/LIFT-add-pronunciation-as-custom-field.xsl"/>
+   </p:xslt>  
+  </p:if>
+  
+  <p:xslt name="clean-media-filenames" message="clean-media-filenames">
+   <p:with-input port="stylesheet" href="../Xslt/LIFT-clean-media-filenames.xsl"/>
+  </p:xslt>
+  
+  <dlb:replace-grammatical-info />
+  
+  <p:store href="../{$root-directory}/{$file-name}-mobile_{$target}.lift" serialization="map{'indent' : true()}" message="Saving ../{$root-directory}/{$file-name}-mobile_{$target}.lift"/>
+  <p:store href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile_{$target}.lift" serialization="map{'indent' : true()}" message="Saving ../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile_{$target}.lift"/>
+  <p:file-copy href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile_{$target}.lift"
+   target="../../../lediir-mobile-app/dictionaries/{upper-case($source-lang)}CS/{upper-case($source-lang)}CS_data/lexicon/LeDIIR-{upper-case($source-lang)}CS-mobile_{$target}.lift"
+   overwrite="true"
+   message="Copying to ../../../lediir-mobile-app/dictionaries/{upper-case($source-lang)}CS/{upper-case($source-lang)}CS_data/lexicon/LeDIIR-{upper-case($source-lang)}CS-mobile_{$target}.lift" />
+  
+  
+ </p:for-each>
  
- 
- <p:xslt name="adding-frequency-as-gloss" message="adding-frequency-as-gloss" use-when="false()">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-add-frequency-as-gloss.xsl"/>
- </p:xslt>
- 
- <p:xslt name="adding-frequency-as-reversal" message="adding-frequency-as-reversal" use-when="false()">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-add-frequency-as-reversal.xsl"/>
- </p:xslt>
 
- 
- <p:xslt name="moving-en-example-to-translation" message="moving-en-example-to-translation">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-move-en-example-to-translation.xsl"/>
- </p:xslt>
-
- <p:xslt name="moving-grammar-note-to-definition" message="moving-grammar-note-to-definition">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-moving-grammar-note-to-definition.xsl"/>
- </p:xslt>
- 
- <p:xslt name="merging-grammar-note-in-definition" message="merging-grammar-note-in-definition">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-merging-grammar-note-in-definition.xsl"/>
- </p:xslt>
-
- <p:xslt name="moving-domain-after-definition" message="moving-domain-after-definition">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-moving-domain-after-definition.xsl"/>
- </p:xslt>
-
- <p:xslt name="adding-domain-as-custom-field" message="adding-domain-as-custom-field">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-add-domain-as-custom-field.xsl"/>
- </p:xslt>
- 
- <p:xslt name="adding-domain-as-gloss" message="adding-domain-as-gloss">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-add-domain-as-gloss.xsl"/>
- </p:xslt>
- 
- <p:xslt name="removing-domain-field" message="removing-domain-field">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-remove-domain-field.xsl"/>
- </p:xslt>
- 
- <p:xslt name="clean-media-filenames" message="clean-media-filenames">
-  <p:with-input port="stylesheet" href="../Xslt/LIFT-clean-media-filenames.xsl"/>
- </p:xslt>
- 
- <dlb:replace-grammatical-info />
- 
- <p:store href="../{$root-directory}/{$file-name}-mobile.lift" serialization="map{'indent' : true()}" message="Saving ../{$root-directory}/{$file-name}-mobile.lift"/>
- <p:store href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile.lift" serialization="map{'indent' : true()}" message="Saving ../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile.lift"/>
- <p:file-copy href="../Dictionary/LeDIIR-{upper-case($source-lang)}CS-mobile.lift"
-  target="../../../lediir-mobile-app/dictionaries/{upper-case($source-lang)}CS/{upper-case($source-lang)}CS_data/lexicon/LeDIIR-{upper-case($source-lang)}CS-mobile.lift"
-  overwrite="true"
-  message="Copying to ../../../lediir-mobile-app/dictionaries/{upper-case($source-lang)}CS/{upper-case($source-lang)}CS_data/lexicon/LeDIIR-{upper-case($source-lang)}CS-mobile.lift" />
- 
  <!--<dlb:add-reversal-for-domain/>-->
  <!-- TODO: change copyright data a version of data in FACS_data/about/about.txt -->
  
