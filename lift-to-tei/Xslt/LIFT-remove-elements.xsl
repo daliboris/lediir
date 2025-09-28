@@ -14,13 +14,8 @@
     
     <xsl:output indent="yes" />
     <xsl:strip-space elements="*"/>
+    <xsl:mode on-no-match="shallow-copy"/>
 
-    <xsl:template match="node() | @*">
-        <xsl:copy>
-            <xsl:apply-templates select="node() | @*"/>
-        </xsl:copy>
-    </xsl:template>
-    
     
     <xd:doc>
         <xd:desc>
@@ -51,8 +46,14 @@
 	<!-- odstranění významu, který není schválen/neprošel kontrolou -->
     <xsl:template match="sense[trait[@name='status' and not(normalize-space(@value)=('Confirmed', 'Proved Czech', 'Verified by reverse translation', 'Verified by examples', 'Not assessed'))]]" />
 	
+    <!-- odstranění heslové stati, která neobsahuje jediný význam, který není schválen/neprošel kontrolou -->
+    <xsl:template match="entry[not(sense[trait[@name='status' and (normalize-space(@value)=('Confirmed', 'Proved Czech', 'Verified by reverse translation', 'Verified by examples', 'Not assessed'))]])]" />
+	
  <!-- Chyba: heslové statě bez heslového slova -->
  <xsl:template match="entry[not(lexical-unit)]" />
+
+ <!-- Heslové stati bez (schválených) významů  -->
+ <xsl:template match="entry[not(sense)]" />
  
  <!-- odkazy na variantu lexému, které nevedou nikam -->
  <xsl:template match="relation[trait[@name='variant-type']][@ref = '']" />
