@@ -4,10 +4,11 @@
  
  <mox:option name="create-sample" value="false" />
  <mox:option name="testing" value="true" />
-
+ 
+ <mox:option name="file-name" value="'2025-09-28'" />
+ <mox:option name="root-directory" value="concat('../../lediir-data/', '2025-09-28')" />
+ 
  <mox:option name="project-acronym" value="'LeDIIR'" />
- <mox:option name="file-name" value="'2025-05-29'" />
- <mox:option name="root-directory" value="concat('../../lediir-data/', '2025-05-29')" />
  <mox:option name="source-lang" value="fa" />
  <mox:option name="flex-file-path" value="'file:/D:/Data/SIL/FieldWorks/Projects/pes-ces-flex/pes-ces-flex.fwdata'" />
  
