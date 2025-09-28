@@ -4,7 +4,7 @@
 
  <p:documentation>Procedura, která vygeneruje grafické soubory pro frekvenční údaje o výskytu heslovného slova, a to na základě dat v aktuální verzi slovníku.</p:documentation>
 
- <p:option name="source-lang" static="true"/>
+ <p:option name="source-lang" static="true" select="'fa'"/>
 
 	<p:output port="result" serialization="map{'indent' : true()}">
 	 <p:documentation>Výstupní informace o počtu vytvořených grafických souborů SVG.</p:documentation>
